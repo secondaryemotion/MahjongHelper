@@ -1,0 +1,17 @@
+{
+    "yakumans": [
+        {
+            "name": "Kokushi musou",
+            "combinations": [
+                "19m19s19p1234567z1p",
+            ]
+        },
+        {
+            "name": "bbb",
+            "combinations": [
+                "111z222z333z",
+                "123z123z123z"
+            ]
+        }
+    ]
+}
