@@ -2,6 +2,7 @@ package main.java.com.secondaryemotion.data.entity;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class HandEntity {
@@ -9,7 +10,7 @@ public class HandEntity {
     private int[] man;
     private int[] pin;
     private int[] sou;
-    private int[] honors;
+    private int[] honor;
     public int maxSuitValue = 9;
     public int maxHonorsValue = 7;
     public int validHandSize = 13;
@@ -24,12 +25,12 @@ public class HandEntity {
         this.setMan(man);
         this.setPin(pin);
         this.setSou(sou);
-        this.setHonors(honors);
+        this.setHonor(honors);
     }
 
     public boolean validate(){
         if (getHandSize() != validHandSize) return false;
-        if (!validateSuit(this.getHonors(),maxHonorsValue)) return false;
+        if (!validateSuit(this.getHonor(),maxHonorsValue)) return false;
         if (!validateSuit(this.getMan(),maxSuitValue)) return false;
         if (!validateSuit(this.getPin(),maxSuitValue)) return false;
         if (!validateSuit(this.getSou(),maxSuitValue)) return false;
@@ -73,16 +74,27 @@ public class HandEntity {
         this.pin = pin;
     }
 
-    public int[] getHonors() {
-        return honors;
+    public int[] getHonor() {
+        return honor;
     }
 
-    public void setHonors(int[] honors) {
-        this.honors = honors;
+    public void setHonor(int[] honor) {
+        this.honor = honor;
     }
 
     public int getHandSize(){
-        return this.getHonors().length + this.getMan().length + this.getSou().length + this.getPin().length;
+        return this.getHonor().length + this.getMan().length + this.getSou().length + this.getPin().length;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof HandEntity that)) return false;
+        return Objects.deepEquals(getMan(), that.getMan()) && Objects.deepEquals(getPin(), that.getPin()) && Objects.deepEquals(getSou(), that.getSou()) && Objects.deepEquals(getHonor(), that.getHonor());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Arrays.hashCode(getMan()), Arrays.hashCode(getPin()), Arrays.hashCode(getSou()), Arrays.hashCode(getHonor()));
     }
 
 }

@@ -14,20 +14,18 @@ class HandVariationEntityTest {
     @DisplayName("Check if generateHand works correctly")
     void generateHand_test() {
         // arrange
-        int[] man = new int[]{2, 7, 3, 9, 1};
+        int[] man = new int[]{2, 3, 9, 1};
         int[] pin = new int[]{};
-        int[] sou = new int[]{2, 1, 2, 2, 9, 1};
-        int[] honors = new int[]{4, 6};
+        int[] sou = new int[]{2, 1, 2, 9, 1};
+        int[] honors = new int[]{4, 6, 4, 4};
         HandEntity hand = new HandEntity(man,pin,sou,honors);
-        String[] manSets = {"123c79c"};
-        String[] pinSets = {};
-        String[] souSets = {"112c22c9c"};
-        String[] honorsSets = {"46c"};
-        HandVariationEntity handVariationEntityExpected = new HandVariationEntity(manSets,pinSets,souSets,honorsSets);
+        HandVariationEntity[] handVariationEntitiesExpected = new HandVariationEntity[2];
+        handVariationEntitiesExpected[0] = new HandVariationEntity("123c9c","","112c2c9c","444c6c");
+        handVariationEntitiesExpected[1] = new HandVariationEntity("123c9c","","1c122c9c","444c6c");
         // act
-        HandVariationEntity handVariationEntity = HandVariationEntity.generateHand(hand);
+        HandVariationEntity[] handVariationEntities = HandVariationEntity.generateHand(hand);
         // assert
-        Assertions.assertEquals(handVariationEntityExpected,handVariationEntity);
+        Assertions.assertArrayEquals(handVariationEntitiesExpected,handVariationEntities);
     }
 
     @Test
@@ -62,6 +60,18 @@ class HandVariationEntityTest {
         String[] expected = {"112c35c8c"};
         // act
         String[] result = HandVariationEntity.getOptimalSetsFrom(tested);
+        // assign
+        Assertions.assertArrayEquals(expected,result);
+    }
+
+    @Test
+    @DisplayName("Check if getHonorsSets works correctly")
+    void getHonorsSets_test() {
+        // arrange
+        int[] testSuit = {4, 4, 4, 6};
+        String[] expected = {"444c6c"};
+        // act
+        String[] result = HandVariationEntity.getHonorsSets(testSuit);
         // assign
         Assertions.assertArrayEquals(expected,result);
     }

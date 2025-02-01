@@ -1,7 +1,6 @@
 package test.java.com.secondaryemotion.data.entity;
 
 import main.java.com.secondaryemotion.data.entity.HandEntity;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -33,7 +32,7 @@ class HandEntityTest {
     void validateSuit_invalidMax_false() {
         // arrange
         int[] invalidHonorSuit = new int[]{1, 1, 2, 2, 1, 5, 7, 1, 9, 1};
-        handEntity.setHonors(invalidHonorSuit);
+        handEntity.setHonor(invalidHonorSuit);
         // act
         boolean result = handEntity.validateSuit(invalidHonorSuit, handEntity.maxHonorsValue);
         // assert
@@ -87,7 +86,7 @@ class HandEntityTest {
         handEntity.setMan(man);
         handEntity.setPin(pin);
         handEntity.setSou(sou);
-        handEntity.setHonors(honors);
+        handEntity.setHonor(honors);
         // act
         boolean result = handEntity.validate();
         // assert
@@ -105,7 +104,7 @@ class HandEntityTest {
         handEntity.setMan(man);
         handEntity.setSou(sou);
         handEntity.setPin(pin);
-        handEntity.setHonors(honors);
+        handEntity.setHonor(honors);
         // act
         boolean result = handEntity.validate();
         // assert
