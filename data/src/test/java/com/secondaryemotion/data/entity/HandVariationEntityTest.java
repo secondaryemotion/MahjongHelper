@@ -76,5 +76,19 @@ class HandVariationEntityTest {
         Assertions.assertArrayEquals(expected,result);
     }
 
+    @Test
+    @DisplayName("Check if transformSetsToArrays works correctly")
+    void transformSetsToArrays_test(){
+        // arrange
+        String testSet = "112c35c8c";
+        int[][] expected = { {1,1,2},{3,5},{8}};
+        // act
+        int[][] result = HandVariationEntity.transformSetsToArrays(testSet);
+        // assign
+        Assertions.assertArrayEquals(expected,result);
+    }
+
+
+
 
 }

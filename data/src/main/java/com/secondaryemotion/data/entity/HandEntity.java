@@ -14,7 +14,6 @@ public class HandEntity {
     public int maxSuitValue = 9;
     public int maxHonorsValue = 7;
     public int validHandSize = 13;
-    public HandVariationEntity[] handVariationEntities;
 
     public HandEntity(int[] man, int[] pin, int[] sou, int[] honors){
         Arrays.sort(man);

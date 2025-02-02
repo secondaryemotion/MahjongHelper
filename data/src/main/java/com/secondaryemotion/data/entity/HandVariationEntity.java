@@ -1,20 +1,28 @@
 package main.java.com.secondaryemotion.data.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class HandVariationEntity {
 
-    private String man;
-    private String pin;
-    private String sou;
-    private String honor;
+    private int[][] man;
+    private int[][] pin;
+    private int[][] sou;
+    private int[][] honor;
 
-    public HandVariationEntity(String man, String pin, String sou, String honor) {
+    public HandVariationEntity(int[][] man, int[][] pin, int[][] sou, int[][] honor) {
         this.man = man;
         this.pin = pin;
         this.sou = sou;
         this.honor = honor;
+    }
+
+    public HandVariationEntity(String man, String pin, String sou, String honor) {
+        this.man = transformSetsToArrays(man);
+        this.pin = transformSetsToArrays(pin);
+        this.sou = transformSetsToArrays(sou);
+        this.honor = transformSetsToArrays(honor);
     }
 
     public static HandVariationEntity[] generateHand(HandEntity hand){
@@ -91,6 +99,23 @@ public class HandVariationEntity {
         return new String[]{combination.toString()};
     }
 
+    public static int[][] transformSetsToArrays(String set){
+        int count = (int) set.chars().filter(ch -> ch == 'c').count();
+        int[][] sets = new int[count][];
+        int i = 0;
+        for (String s : set.split("c")){
+            int j = 0;
+            int[] tempSet = new int[s.length()];
+            for (String num : s.split("")){
+                tempSet[j] = Integer.parseInt(num);
+                j++;
+            }
+            sets[i] = tempSet;
+            i++;
+        }
+        return sets;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof HandVariationEntity that)) return false;
@@ -99,38 +124,38 @@ public class HandVariationEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(man, pin, sou, honor);
+        return Objects.hash(Arrays.deepHashCode(man), Arrays.deepHashCode(pin), Arrays.deepHashCode(sou), Arrays.deepHashCode(honor));
     }
 
-    public String getMan() {
+    public int[][] getMan() {
         return man;
     }
 
-    public void setMan(String man) {
+    public void setMan(int[][] man) {
         this.man = man;
     }
 
-    public String getPin() {
+    public int[][] getPin() {
         return pin;
     }
 
-    public void setPin(String pin) {
+    public void setPin(int[][] pin) {
         this.pin = pin;
     }
 
-    public String getSou() {
+    public int[][] getSou() {
         return sou;
     }
 
-    public void setSou(String sou) {
+    public void setSou(int[][] sou) {
         this.sou = sou;
     }
 
-    public String getHonor() {
+    public int[][] getHonor() {
         return honor;
     }
 
-    public void setHonor(String honor) {
+    public void setHonor(int[][] honor) {
         this.honor = honor;
     }
 
