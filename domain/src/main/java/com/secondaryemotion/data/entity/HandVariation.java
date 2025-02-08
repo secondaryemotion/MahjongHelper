@@ -2,7 +2,6 @@ package main.java.com.secondaryemotion.data.entity;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.stream.*;
 
 public class HandVariation {
 
@@ -10,16 +9,16 @@ public class HandVariation {
     private int[][] pin;
     private int[][] sou;
     private int[][] honor;
-    private double[] tiles;
+    private double[] tileProbabilities;
 
-    public HandVariation(){};
+    public HandVariation(){}
 
-    public HandVariation(int[][] man, int[][] pin, int[][] sou, int[][] honor, int[] tiles) {
+    public HandVariation(int[][] man, int[][] pin, int[][] sou, int[][] honor, int[] tileProbabilities) {
         this.man = man;
         this.pin = pin;
         this.sou = sou;
         this.honor = honor;
-        this.tiles = Arrays.stream(tiles).mapToDouble(HandVariation::countProbability).toArray();
+        this.tileProbabilities = Arrays.stream(tileProbabilities).mapToDouble(HandVariation::countProbability).toArray();
     }
 
     public static double countProbability(int i){
@@ -59,12 +58,12 @@ public class HandVariation {
         this.honor = honor;
     }
 
-    public double[] getTiles() {
-        return tiles;
+    public double[] getTileProbabilities() {
+        return tileProbabilities;
     }
 
-    public void setTiles(double[] tiles) {
-        this.tiles = tiles;
+    public void setTileProbabilities(double[] tileProbabilities) {
+        this.tileProbabilities = tileProbabilities;
     }
 
     @Override

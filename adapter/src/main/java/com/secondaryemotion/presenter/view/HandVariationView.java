@@ -2,23 +2,22 @@ package main.java.com.secondaryemotion.presenter.view;
 
 public class HandVariationView {
 
+    private int[][] tiles;
 
-
-    private int[] tiles = new int[34];
-    private int[][] man;
-    private int[][] pin;
-    private int[][] sou;
-    private int[][] honor;
-
-    public HandVariationView(){};
-
-    public HandVariationView(int[][] man, int[][] pin, int[][] sou, int[][] honor) {
-        this.man = man;
-        this.pin = pin;
-        this.sou = sou;
-        this.honor = honor;
+    public HandVariationView(int[][] man, int[][] pin, int[][] sou, int[][] honors){
+        int[][] tiles = new int[man.length+pin.length+sou.length+ honors.length][];
+        System.arraycopy(man,0,tiles,0,man.length);
+        System.arraycopy(pin,0,tiles,man.length,pin.length);
+        System.arraycopy(sou,0,tiles,man.length+pin.length,sou.length);
+        System.arraycopy(honors,0,tiles,man.length+pin.length+sou.length,honors.length);
+        this.tiles = tiles;
     }
 
+    public int[][] getTiles() {
+        return tiles;
+    }
 
-
+    public void setTiles(int[][] tiles) {
+        this.tiles = tiles;
+    }
 }

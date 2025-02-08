@@ -14,10 +14,9 @@ public class Hand {
     private int[] sou;
     private int[] honor;
 
-    public Hand(){};
 
-    public Hand(String handJsonResponse){
-        HandJsonMapper.transformHand(handJsonResponse);
+    public static Hand parseHand(String handJsonResponse){
+        return HandJsonMapper.transformHand(handJsonResponse);
     }
 
     public Hand(int[] man, int[] pin, int[] sou, int[] honors){
