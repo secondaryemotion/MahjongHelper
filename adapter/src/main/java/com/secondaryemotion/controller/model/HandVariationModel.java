@@ -65,13 +65,6 @@ public class HandVariationModel {
     public int hashCode() {
         return Objects.hash(Arrays.deepHashCode(man), Arrays.deepHashCode(pin), Arrays.deepHashCode(sou), Arrays.deepHashCode(honor));
     }
-    public HandVariation toHandVariation(){
-        HandVariation handVariation = new HandVariation();
-        handVariation.setMan(this.getMan());
-        handVariation.setPin(this.getPin());
-        handVariation.setSou(this.getSou());
-        handVariation.setHonor(this.getHonor());
-        return handVariation;
-    }
+
 
 }
