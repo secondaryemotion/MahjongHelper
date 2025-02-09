@@ -5,12 +5,41 @@ import main.java.com.secondaryemotion.data.entity.HandVariation;
 
 import java.util.ArrayList;
 
-public class GenerateHandVariations {
+/*  Hand variation - starting hand divided into complete and potential sets
+    12245m234p4s3345z -> [1-2-2]m,[4-5]m,[2-3-4]p,[4]s,[3-3]z,[4]z,[5]z
+
+    Complete set - combination of 3 tiles (etc. 3-4-5 or 3-3-3)
+    Potential set - combination of 2 tiles (3-4 or 3-3), we need to add 1 tile
+    or combination of 3 tiles (3-4-4 or 1-1-3), we need to replace 1 tile to finish the set 3-4-4 -> 3-4-5 or 4-4-4
+    distance between lowest and highest tile in a set can't be more than 2: 1-1-3 works, 1-3-4 doesn't
+
+    * Honor suit tiles (z in mahjong notation) can only make sets with identical tiles (3345 -> 3-3, 4, 5)
+    * There is also a rare 4 identical tiles combination, which counts as a Set
+    * Winning hand also need to have one Pair, that's why floating tiles are not that useless
+
+    Variations are formed by going through the sorted hand and dividing it into 1-3 tile combinations of close valued tiles
+    1234667 -> 1-2-3, 4-6-6, 7
+    then in findSets method we cyclically isolate the first N numbers to make different sets if possible
+    1234667 -> 1, 2-3-4, 6-6-7
+    1234667 -> 1, 2, 3-4, 6-6-7
+    1234667 -> 1, 2, 3, 4-6-6, 7
+    ...
+
+    getOptimalSetsFrom finds variations that have the least amount of sets so it's easier to finish them
+    [1, 2-3-4, 6-6-7] and [1-2-3, 4-6-6, 7] are optimal
+    both have one complete set, one potential set and one floating tile, which could be discarded or combined into Pair
+ */
+
+public class HandVariationsGenerator {
     public static HandVariation[] generateHand(Hand hand){
         String[] mans = getOptimalSetsFrom(findSets(hand.getMan()));
         String[] pins = getOptimalSetsFrom(findSets(hand.getPin()));
         String[] sous = getOptimalSetsFrom(findSets(hand.getSou()));
-        String[] honors = getHonorsSets(hand.getHonor());
+        String[] honors = getOptimalHonorsSets(hand.getHonor());
+        return getHandVariations(hand, mans, pins, sous, honors);
+    }
+
+    private static HandVariation[] getHandVariations(Hand hand, String[] mans, String[] pins, String[] sous, String[] honors) {
         HandVariation[] handVariations = new HandVariation[mans.length * pins.length * sous.length * honors.length];
         int i = 0;
         for(String man : mans){
@@ -71,7 +100,7 @@ public class GenerateHandVariations {
         return result;
     }
 
-    public static String[] getHonorsSets(int[] honors){
+    public static String[] getOptimalHonorsSets(int[] honors){
         StringBuilder combination = new StringBuilder();
         for (int i = 0; i < honors.length; i++){
             combination.append(honors[i]);

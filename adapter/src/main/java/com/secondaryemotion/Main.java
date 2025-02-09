@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
-        String handJsonResponse = "{\"hand\":\"1678m9p58s111455z\"}";
+        String handJsonResponse = "{\"hand\":\"1678m9p58s1111455z\"}";
         Controller controller = new Controller();
         controller.requestFullHandViews(handJsonResponse);
     }

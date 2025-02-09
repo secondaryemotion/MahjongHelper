@@ -1,12 +1,5 @@
 package test.java.com.secondaryemotion.domain.interactor;
 
-import main.java.com.secondaryemotion.domain.interactor.GenerateHandVariations;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-
 class GenerateHandVariationTest {
 /*
     @Test
@@ -22,7 +15,7 @@ class GenerateHandVariationTest {
         handVariationsExpected[0] = new HandVariation(new int[][]{{1,2,3},{9}},new int[][]{},new int[][]{{1,1,2},{2},{9}}, new int[][]{{4,4,4},{6}});
         handVariationsExpected[1] = new HandVariation(new int[][]{{1,2,3},{9}},new int[][]{},new int[][]{{1},{1,2,2},{9}}, new int[][]{{4,4,4},{6}});
         // act
-        HandVariation[] handVariations = GenerateHandVariations.generateHand(hand);
+        HandVariation[] handVariations = HandVariationsGenerator.generateHand(hand);
         // assert
         Assertions.assertArrayEquals(handVariationsExpected,handVariations);
     }
@@ -40,7 +33,7 @@ class GenerateHandVariationTest {
         expected.add("1c1c2c3c5c8c");
         expected.add("1c1c2c3c5c8c");
         // act
-        ArrayList<String> result = GenerateHandVariations.findSets(testSuit);
+        ArrayList<String> result = HandVariationsGenerator.findSets(testSuit);
         // assign
         Assertions.assertIterableEquals(expected,result);
     }
@@ -58,7 +51,7 @@ class GenerateHandVariationTest {
         tested.add("1c1c2c3c5c8c");
         String[] expected = {"112c35c8c"};
         // act
-        String[] result = GenerateHandVariations.getOptimalSetsFrom(tested);
+        String[] result = HandVariationsGenerator.getOptimalSetsFrom(tested);
         // assign
         Assertions.assertArrayEquals(expected,result);
     }
@@ -70,7 +63,7 @@ class GenerateHandVariationTest {
         int[] testSuit = {4, 4, 4, 6};
         String[] expected = {"444c6c"};
         // act
-        String[] result = GenerateHandVariations.getHonorsSets(testSuit);
+        String[] result = HandVariationsGenerator.getHonorsSets(testSuit);
         // assign
         Assertions.assertArrayEquals(expected,result);
     }
@@ -82,7 +75,7 @@ class GenerateHandVariationTest {
         String testSet = "112c35c8c";
         int[][] expected = { {1,1,2},{3,5},{8}};
         // act
-        int[][] result = GenerateHandVariations.transformSetsToArrays(testSet);
+        int[][] result = HandVariationsGenerator.transformSetsToArrays(testSet);
         // assign
         Assertions.assertArrayEquals(expected,result);
     }
