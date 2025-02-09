@@ -1,7 +1,5 @@
 package main.java.com.secondaryemotion.domain.interactor;
 
-
-
 import main.java.com.secondaryemotion.data.entity.Hand;
 import main.java.com.secondaryemotion.data.entity.HandVariation;
 

@@ -1,10 +1,10 @@
-package main.java.com.secondaryemotion.presenter.view;
+package main.java.com.secondaryemotion.views.view;
 
-public class HandVariationWaitsView {
+public class HandBaseView {
 
     private int[][] tiles;
 
-    public HandVariationWaitsView(int[][] man, int[][] pin, int[][] sou, int[][] honors){
+    public HandBaseView(int[][] man, int[][] pin, int[][] sou, int[][] honors){
         int[][] tiles = new int[man.length+pin.length+sou.length+ honors.length][];
         System.arraycopy(man,0,tiles,0,man.length);
         System.arraycopy(pin,0,tiles,man.length,pin.length);

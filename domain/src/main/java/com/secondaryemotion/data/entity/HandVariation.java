@@ -11,8 +11,6 @@ public class HandVariation {
     private int[][] honor;
     private double[] tileProbabilities;
 
-    public HandVariation(){}
-
     public HandVariation(int[][] man, int[][] pin, int[][] sou, int[][] honor, int[] tileProbabilities) {
         this.man = man;
         this.pin = pin;

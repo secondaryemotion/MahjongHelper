@@ -6,14 +6,14 @@ import org.json.JSONObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HandJsonMapper {
+public class HandJsonParser {
 
     private static final Pattern manPattern = Pattern.compile("[1-9]{1,13}m");
     private static final Pattern pinPattern = Pattern.compile("[1-9]{1,13}p");
     private static final Pattern souPattern = Pattern.compile("[1-9]{1,13}s");
     private static final Pattern honorPattern = Pattern.compile("[1-7]{1,13}z");
 
-    public static Hand transformHand(String handJsonResponse){
+    public static Hand parse(String handJsonResponse){
         JSONObject obj = new JSONObject(handJsonResponse);
         String handString = obj.getString("hand");
         int[] man = findSuitMatch(handString,manPattern);

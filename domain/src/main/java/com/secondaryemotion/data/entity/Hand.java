@@ -1,6 +1,6 @@
 package main.java.com.secondaryemotion.data.entity;
 
-import main.java.com.secondaryemotion.data.entity.mapper.HandJsonMapper;
+import main.java.com.secondaryemotion.data.entity.mapper.HandJsonParser;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -16,7 +16,7 @@ public class Hand {
 
 
     public static Hand parseHand(String handJsonResponse){
-        return HandJsonMapper.transformHand(handJsonResponse);
+        return HandJsonParser.parse(handJsonResponse);
     }
 
     public Hand(int[] man, int[] pin, int[] sou, int[] honors){
