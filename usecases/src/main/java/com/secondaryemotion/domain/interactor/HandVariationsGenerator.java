@@ -63,17 +63,17 @@ public class HandVariationsGenerator {
         ArrayList<String> sets = new ArrayList<>();
         for (int i = 0; i < suit.length; i++){
             StringBuilder combination = new StringBuilder();
-            for (int j = 0; j < suit.length; j++){
-                if (j < i) {
-                    combination.append(suit[j]).append("c");
+            for (int setSearchOffset = 0; setSearchOffset < suit.length; setSearchOffset++){
+                if (setSearchOffset < i) {
+                    combination.append(suit[setSearchOffset]).append("c");
                 } else {
-                    combination.append(suit[j]);
-                    if (j+1 < suit.length && suit[j+1] - suit[j] <= 2) {
-                        combination.append(suit[j+1]);
-                        j++;
-                        if (j+1 < suit.length && suit[j+1] - suit[j-1] <= 2) {
-                            combination.append(suit[j+1]);
-                            j++;
+                    combination.append(suit[setSearchOffset]);
+                    if (setSearchOffset+1 < suit.length && suit[setSearchOffset+1] - suit[setSearchOffset] <= 2) {
+                        combination.append(suit[setSearchOffset+1]);
+                        setSearchOffset++;
+                        if (setSearchOffset+1 < suit.length && suit[setSearchOffset+1] - suit[setSearchOffset-1] <= 2) {
+                            combination.append(suit[setSearchOffset+1]);
+                            setSearchOffset++;
                         }
                     }
                     combination.append("c");

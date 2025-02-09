@@ -58,7 +58,9 @@ public class HandVariationWaitsGenerator {
 
     private static int[] generateWaitsForThreeTiles(int[][] suit, int i) {
         int[] tempSet;
-        if ((suit[i][0] + suit[i][1] + suit[i][2]) % 3 == 0) {
+        int tilesSetSum = suit[i][0] + suit[i][1] + suit[i][2];
+        boolean isSetComplete = (tilesSetSum) % 3 == 0;
+        if (isSetComplete) {
             tempSet = new int[0];
         } else if (suit[i][0]+1 == suit[i][1] || suit[i][1]+1 == suit[i][2]) {
             if (suit[i][0]==leftEdge || suit[i][2]==rightEdge){
