@@ -4,6 +4,8 @@ import main.java.com.secondaryemotion.data.entity.Hand;
 import main.java.com.secondaryemotion.data.entity.HandVariation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /*  Hand variation - starting hand divided into complete and potential sets
     12245m234p4s3345z -> [1-2-2]m,[4-5]m,[2-3-4]p,[4]s,[3-3]z,[4]z,[5]z
@@ -39,7 +41,7 @@ public class HandVariationsGenerator {
         return getHandVariations(hand, mans, pins, sous, honors);
     }
 
-    private static HandVariation[] getHandVariations(Hand hand, String[] mans, String[] pins, String[] sous, String[] honors) {
+    public static HandVariation[] getHandVariations(Hand hand, String[] mans, String[] pins, String[] sous, String[] honors) {
         HandVariation[] handVariations = new HandVariation[mans.length * pins.length * sous.length * honors.length];
         int i = 0;
         for(String man : mans){
@@ -59,7 +61,7 @@ public class HandVariationsGenerator {
         return handVariations;
     }
 
-    private static ArrayList<String> findSets(int[] suit){
+    public static ArrayList<String> findSets(int[] suit){
         ArrayList<String> sets = new ArrayList<>();
         for (int i = 0; i < suit.length; i++){
             StringBuilder combination = new StringBuilder();
@@ -84,9 +86,9 @@ public class HandVariationsGenerator {
         return sets;
     }
 
-    private static String[] getOptimalSetsFrom(ArrayList<String> sets){
+    public static String[] getOptimalSetsFrom(ArrayList<String> sets){
         int optimalCount = 13;
-        ArrayList<String> optimalSets = new ArrayList<>();
+        Set<String> optimalSets = new HashSet<>();
         for (String set : sets) {
             int count = (int) set.chars().filter(ch -> ch == 'c').count();
             if (count <= optimalCount) {
@@ -100,7 +102,7 @@ public class HandVariationsGenerator {
         return result;
     }
 
-    private static String[] getOptimalHonorsSets(int[] honors){
+    public static String[] getOptimalHonorsSets(int[] honors){
         StringBuilder combination = new StringBuilder();
         for (int i = 0; i < honors.length; i++){
             combination.append(honors[i]);
@@ -113,7 +115,7 @@ public class HandVariationsGenerator {
         return new String[]{combination.toString()};
     }
 
-    private static int[][] transformSetsToArrays(String set){
+    public static int[][] transformSetsToArrays(String set){
         int count = (int) set.chars().filter(ch -> ch == 'c').count();
         int[][] sets = new int[count][];
         String[] splitSet = set.split("c");

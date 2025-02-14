@@ -36,7 +36,7 @@ public class HandVariationWaitsGenerator {
         return new HandVariationWaits(manWaits,pinWaits,souWaits,honorWaits);
     }
 
-    private static int[][] generateSuitWaits(int[][] suit){
+    public static int[][] generateSuitWaits(int[][] suit){
         int[][] result = new int[suit.length][];
         for (int i = 0; i<suit.length; i++){
             switch (suit[i].length){
@@ -45,106 +45,107 @@ public class HandVariationWaitsGenerator {
                     break;
                 }
                 case 2: {
-                    result[i] = generateWaitsForTwoTiles(suit, i);
+                    result[i] = generateWaitsForTwoTiles(suit[i]);
                     break;
                 }
                 case 3: {
-                    result[i] = generateWaitsForThreeTiles(suit, i);
+                    result[i] = generateWaitsForThreeTiles(suit[i]);
                 }
             }
         }
         return result;
     }
 
-    private static int[] generateWaitsForThreeTiles(int[][] suit, int i) {
+    public static int[] generateWaitsForThreeTiles(int[] set) {
         int[] tempSet;
-        int tilesSetSum = suit[i][0] + suit[i][1] + suit[i][2];
+        int tilesSetSum = set[0] + set[1] + set[2];
         boolean isSetComplete = (tilesSetSum) % 3 == 0;
         if (isSetComplete) {
             tempSet = new int[0];
-        } else if (suit[i][0]+1 == suit[i][1] || suit[i][1]+1 == suit[i][2]) {
-            if (suit[i][0]==leftEdge || suit[i][2]==rightEdge){
-                tempSet = generateEdgeAndIdenticalWaits(suit, i);
+        } else if (set[0]+1 == set[1] || set[1]+1 == set[2]) {
+            if (set[0]==leftEdge || set[2]==rightEdge){
+                tempSet = generateEdgeAndIdenticalWaits(set);
             } else {
-                tempSet = generateSideAndIdenticalWaits(suit[i]);
+                tempSet = generateSideAndIdenticalWaits(set);
             }
         } else {
-            tempSet = generateClosedWaitForTriple(suit[i]);
+            tempSet = generateClosedAndSideWaitForTriple(set);
         }
         return tempSet;
     }
 
-    private static int[] generateWaitsForTwoTiles(int[][] suit, int i) {
+    public static int[] generateWaitsForTwoTiles(int[] set) {
         int[] tempSet;
-        if (suit[i][0] + 2 == suit[i][1]) {
-            tempSet = generateClosedWait(suit[i]);
+        if (set[0] + 2 == set[1]) {
+            tempSet = generateClosedWait(set);
         } else {
-            if (suit[i][0]==leftEdge || suit[i][2]==rightEdge){
-                tempSet = generateEdgeWait(suit, i);
+            if (set[0]==leftEdge || set[1]==rightEdge){
+                tempSet = generateEdgeWait(set);
             } else {
-                tempSet = generateSideWaits(suit[i]);
+                tempSet = generateSideWaits(set);
             }
         }
         return tempSet;
     }
 
-    private static int[] generateEdgeAndIdenticalWaits(int[][] suit, int i) {
+    public static int[] generateEdgeAndIdenticalWaits(int[] set) {
         int[] tempSet = new int[2];
-        if (suit[i][0] == 1) {
-            tempSet[0] = suit[i][1];
-            tempSet[1] = suit[i][2] + 1;
+        if (set[0] == 1) {
+            tempSet[0] = set[1];
+            tempSet[1] = set[2] + 1;
         } else {
-            tempSet[0] = suit[i][0] - 1;
-            tempSet[1] = suit[i][1];
+            tempSet[0] = set[0] - 1;
+            tempSet[1] = set[1];
         }
         return tempSet;
     }
 
-    private static int[] generateSideAndIdenticalWaits(int[] suit) {
+    public static int[] generateSideAndIdenticalWaits(int[] set) {
         int[] tempSet = new int[3];
-        tempSet[0] = suit[0] - 1;
-        tempSet[1] = suit[2] + 1;
-        tempSet[2] = suit[1];
+        tempSet[0] = set[0] - 1;
+        tempSet[1] = set[2] + 1;
+        tempSet[2] = set[1];
         return tempSet;
     }
 
-    private static int[] generateClosedWaitForTriple(int[] suit) {
-        int[] tempSet = new int[1];
-        tempSet[0] = (suit[0]+ suit[2])/2;
-        return tempSet;
-    }
-
-    private static int[] generateSideWaits(int[] suit) {
+    public static int[] generateClosedAndSideWaitForTriple(int[] set) {
         int[] tempSet = new int[2];
-        tempSet[0] = suit[0] - 1;
-        tempSet[1] = suit[1] + 1;
+        tempSet[0] = (set[0]+ set[2])/2;
+        tempSet[1] = set[1];
         return tempSet;
     }
 
-    private static int[] generateEdgeWait(int[][] suit, int i) {
+    public static int[] generateSideWaits(int[] set) {
+        int[] tempSet = new int[2];
+        tempSet[0] = set[0] - 1;
+        tempSet[1] = set[1] + 1;
+        return tempSet;
+    }
+
+    public static int[] generateEdgeWait(int[] set) {
         int[] tempSet = new int[1];
-        if (suit[i][0] == 1) {
-            tempSet[0] = suit[i][1] + 1;
+        if (set[0] == 1) {
+            tempSet[0] = set[1] + 1;
         } else {
-            tempSet[0] = suit[i][0] - 1;
+            tempSet[0] = set[0] - 1;
         }
         return tempSet;
     }
 
-    private static int[] generateClosedWait(int[] suit) {
+    public static int[] generateClosedWait(int[] set) {
         int[] tempSet = new int[1];
-        tempSet[0] = (suit[0] + suit[1]) / 2;
+        tempSet[0] = (set[0] + set[1]) / 2;
         return tempSet;
     }
 
-    private static int[] generatePairWait(int[] suit) {
+    public static int[] generatePairWait(int[] set) {
         int[] tempPair = new int[1];
-        tempPair[0] = suit[0];
+        tempPair[0] = set[0];
         return tempPair;
     }
 
 
-    private static int[][] generateHonorWaits(int[][] honors){
+    public static int[][] generateHonorWaits(int[][] honors){
         int[][] result = new int[honors.length][];
         for (int i = 0; i<honors.length; i++){
             result[i] = new int[]{honors[i][0]};

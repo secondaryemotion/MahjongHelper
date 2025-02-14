@@ -1,4 +1,4 @@
-package main.java.com.secondaryemotion.data.entity.mapper;
+package main.java.com.secondaryemotion.data.entity.parser;
 
 import main.java.com.secondaryemotion.data.entity.Hand;
 import main.java.com.secondaryemotion.data.exception.InvalidHandException;

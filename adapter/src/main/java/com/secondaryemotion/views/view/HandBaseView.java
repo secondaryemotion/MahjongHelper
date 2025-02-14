@@ -1,5 +1,8 @@
 package main.java.com.secondaryemotion.views.view;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class HandBaseView {
 
     private int[][] tiles;
@@ -21,4 +24,14 @@ public class HandBaseView {
         this.tiles = tiles;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof HandBaseView that)) return false;
+        return Objects.deepEquals(getTiles(), that.getTiles());
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(getTiles());
+    }
 }
