@@ -1,7 +1,7 @@
-package main.java.com.secondaryemotion.domain.interactor;
+package com.secondaryemotion.domain.interactor;
 
-import main.java.com.secondaryemotion.data.entity.Hand;
-import main.java.com.secondaryemotion.data.entity.HandVariation;
+import com.secondaryemotion.data.entity.Hand;
+import com.secondaryemotion.data.entity.HandVariation;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package main.java.com.secondaryemotion.data.entity;
+package com.secondaryemotion.data.entity;
 
 public class HandVariationWaits {
 

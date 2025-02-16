@@ -1,4 +1,4 @@
-package main.java.com.secondaryemotion.views.view;
+package com.secondaryemotion.views.view;
 
 public class HandVariationView extends HandBaseView{
 

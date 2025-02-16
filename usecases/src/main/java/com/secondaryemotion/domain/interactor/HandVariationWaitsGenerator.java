@@ -1,8 +1,8 @@
-package main.java.com.secondaryemotion.domain.interactor;
+package com.secondaryemotion.domain.interactor;
 
 
-import main.java.com.secondaryemotion.data.entity.HandVariation;
-import main.java.com.secondaryemotion.data.entity.HandVariationWaits;
+import com.secondaryemotion.data.entity.HandVariation;
+import com.secondaryemotion.data.entity.HandVariationWaits;
 
 /* Hand variation waits - tiles that we need to obtain to form a winning hand
     [2-3-3]m,[4-5]m,[2-3-4]p,[4]s,[3-3]z,[4]z,[5]z hand

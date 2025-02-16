@@ -1,22 +1,22 @@
-package main.java.com.secondaryemotion.controller;
+package com.secondaryemotion.controller;
 
-import main.java.com.secondaryemotion.data.entity.Hand;
-import main.java.com.secondaryemotion.data.entity.HandVariation;
-import main.java.com.secondaryemotion.data.entity.HandVariationWaits;
-import main.java.com.secondaryemotion.domain.interactor.HandVariationWaitsGenerator;
-import main.java.com.secondaryemotion.domain.interactor.HandVariationsGenerator;
-import main.java.com.secondaryemotion.views.view.FullHandView;
+import com.secondaryemotion.data.entity.Hand;
+import com.secondaryemotion.data.entity.HandVariation;
+import com.secondaryemotion.data.entity.HandVariationWaits;
+import com.secondaryemotion.domain.interactor.HandVariationWaitsGenerator;
+import com.secondaryemotion.domain.interactor.HandVariationsGenerator;
+import com.secondaryemotion.views.view.FullHandView;
 
 public class Controller {
-    private FullHandView fullHandView;
 
-    public void requestFullHandViews(String handJsonResponse){
-        Hand hand = Hand.parseHand(handJsonResponse);
+    public FullHandView requestFullHandViews(String handRequest){
+        Hand hand = Hand.parseHand(handRequest);
         HandVariation[] handVariations = HandVariationsGenerator.generateHand(hand);
         for (HandVariation handVariation : handVariations){
             HandVariationWaits handVariationWaits = HandVariationWaitsGenerator.generateWaits(handVariation);
-            fullHandView = new FullHandView(handVariation,handVariationWaits);
+            return new FullHandView(handVariation, handVariationWaits);
         }
+        return null;
     }
 
 }

@@ -1,6 +1,6 @@
-package main.java.com.secondaryemotion.data.entity;
+package com.secondaryemotion.data.entity;
 
-import main.java.com.secondaryemotion.data.entity.parser.HandJsonParser;
+import com.secondaryemotion.data.entity.parser.HandJsonParser;
 
 import java.util.Arrays;
 import java.util.Objects;

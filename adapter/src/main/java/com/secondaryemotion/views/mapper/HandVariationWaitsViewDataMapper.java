@@ -1,7 +1,7 @@
-package main.java.com.secondaryemotion.views.mapper;
+package com.secondaryemotion.views.mapper;
 
-import main.java.com.secondaryemotion.data.entity.HandVariationWaits;
-import main.java.com.secondaryemotion.views.view.HandVariationWaitsView;
+import com.secondaryemotion.data.entity.HandVariationWaits;
+import com.secondaryemotion.views.view.HandVariationWaitsView;
 
 import java.util.Arrays;
 

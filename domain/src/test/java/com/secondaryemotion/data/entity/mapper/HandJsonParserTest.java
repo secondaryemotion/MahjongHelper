@@ -1,8 +1,8 @@
-package test.java.com.secondaryemotion.data.entity.mapper;
+package com.secondaryemotion.data.entity.mapper;
 
-import main.java.com.secondaryemotion.data.entity.Hand;
-import main.java.com.secondaryemotion.data.entity.parser.HandJsonParser;
-import main.java.com.secondaryemotion.data.exception.InvalidHandException;
+import com.secondaryemotion.data.entity.Hand;
+import com.secondaryemotion.data.entity.parser.HandJsonParser;
+import com.secondaryemotion.data.exception.InvalidHandException;
 import org.junit.jupiter.api.*;
 
 

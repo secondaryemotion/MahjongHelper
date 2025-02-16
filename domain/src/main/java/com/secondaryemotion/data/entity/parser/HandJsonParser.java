@@ -1,7 +1,7 @@
-package main.java.com.secondaryemotion.data.entity.parser;
+package com.secondaryemotion.data.entity.parser;
 
-import main.java.com.secondaryemotion.data.entity.Hand;
-import main.java.com.secondaryemotion.data.exception.InvalidHandException;
+import com.secondaryemotion.data.entity.Hand;
+import com.secondaryemotion.data.exception.InvalidHandException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -18,9 +18,9 @@ public class HandJsonParser {
     private static final Pattern souPattern = Pattern.compile("[1-9]{1,13}s");
     private static final Pattern honorPattern = Pattern.compile("[1-7]{1,13}z");
 
-    public static Hand parse(String handJsonResponse){
-        JSONObject obj = new JSONObject(handJsonResponse);
-        String handString = obj.getString("hand");
+    public static Hand parse(String handString){
+        //JSONObject obj = new JSONObject(handJsonResponse);
+        //String handString = obj.getString("hand");
         int[] man = findSuitMatch(handString,manPattern);
         int[] pin = findSuitMatch(handString,pinPattern);
         int[] sou = findSuitMatch(handString,souPattern);

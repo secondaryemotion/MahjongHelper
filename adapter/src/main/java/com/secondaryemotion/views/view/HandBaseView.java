@@ -1,4 +1,4 @@
-package main.java.com.secondaryemotion.views.view;
+package com.secondaryemotion.views.view;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -34,4 +34,5 @@ public class HandBaseView {
     public int hashCode() {
         return Arrays.deepHashCode(getTiles());
     }
+
 }

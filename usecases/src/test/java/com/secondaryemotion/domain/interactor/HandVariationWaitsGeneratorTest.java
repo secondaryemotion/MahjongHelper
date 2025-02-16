@@ -1,6 +1,5 @@
-package test.java.com.secondaryemotion.domain.interactor;
+package com.secondaryemotion.domain.interactor;
 
-import main.java.com.secondaryemotion.domain.interactor.HandVariationWaitsGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

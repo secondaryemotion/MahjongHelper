@@ -1,8 +1,7 @@
-package test.java.com.secondaryemotion.views.mapper;
+package com.secondaryemotion.views.mapper;
 
-import main.java.com.secondaryemotion.data.entity.HandVariation;
-import main.java.com.secondaryemotion.views.mapper.HandVariationViewDataMapper;
-import main.java.com.secondaryemotion.views.view.HandVariationView;
+import com.secondaryemotion.data.entity.HandVariation;
+import com.secondaryemotion.views.view.HandVariationView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

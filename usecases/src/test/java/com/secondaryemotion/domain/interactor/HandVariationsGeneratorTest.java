@@ -1,4 +1,4 @@
-package test.java.com.secondaryemotion.domain.interactor;
+package com.secondaryemotion.domain.interactor;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static main.java.com.secondaryemotion.domain.interactor.HandVariationsGenerator.*;
+import static com.secondaryemotion.domain.interactor.HandVariationsGenerator.*;
 
 class HandVariationsGeneratorTest {
 
