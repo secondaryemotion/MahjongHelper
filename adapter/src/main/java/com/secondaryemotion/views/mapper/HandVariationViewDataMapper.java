@@ -7,7 +7,11 @@ import java.util.Arrays;
 
 public class HandVariationViewDataMapper {
     public static HandVariationView transform(HandVariation handVariation){
-        int[][] manVariation = handVariation.getMan();
+        int[][] man = handVariation.getMan();
+        int[][] manVariation = new int[man.length][];
+        for (int i = 0; i < man.length; i++){
+            manVariation[i] = Arrays.stream(man[i]).map(j -> (j-1)).toArray();
+        }
 
         int[][] pin = handVariation.getPin();
         int[][] pinVariation = new int[pin.length][];

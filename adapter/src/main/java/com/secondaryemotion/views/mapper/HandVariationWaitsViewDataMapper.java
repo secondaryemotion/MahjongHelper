@@ -8,7 +8,11 @@ import java.util.Arrays;
 public class HandVariationWaitsViewDataMapper {
 
     public static HandVariationWaitsView transform(HandVariationWaits handVariationWaits){
-        int[][] manWaits = handVariationWaits.getManWaits();
+        int[][] man = handVariationWaits.getManWaits();
+        int[][] manWaits = new int[man.length][];
+        for (int i = 0; i < man.length; i++){
+            manWaits[i] = Arrays.stream(man[i]).map(j -> (j-1)).toArray();
+        }
 
         int[][] pin = handVariationWaits.getPinWaits();
         int[][] pinWaits = new int[pin.length][];

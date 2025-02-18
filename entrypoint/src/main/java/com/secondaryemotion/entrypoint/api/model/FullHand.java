@@ -13,12 +13,12 @@ public class FullHand {
         this.handVariationWaitsTiles = handVariationWaits;
     }
 
-    public String getHandVariationTiles() {
-        return Arrays.deepToString(handVariationTiles);
+    public int[][] getHandVariationTiles() {
+        return handVariationTiles;
     }
 
-    public String getHandVariationWaitsTiles() {
-        return Arrays.deepToString( handVariationWaitsTiles);
+    public int[][] getHandVariationWaitsTiles() {
+        return handVariationWaitsTiles;
     }
 
 }
