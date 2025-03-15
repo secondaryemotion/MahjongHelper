@@ -14,6 +14,7 @@ public class FullHandGeneratorController {
     public FullHandGeneratorController(FullHandGeneratorService service){
         this.fullHandGeneratorService = service;
     }
+
     @CrossOrigin
     @GetMapping("/analyseHand")
     @ResponseBody

@@ -9,8 +9,8 @@
 
 
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -53,7 +53,7 @@
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>com.secondaryemotion.Main</Main-Class>
+                                        <Main-Class>com.secondaryemotion.testing</Main-Class>
                                     </manifestEntries>
                                 </transformer>
                             </transformers>
